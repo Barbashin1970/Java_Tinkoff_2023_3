@@ -8,20 +8,19 @@ public class Main {
         System.out.println("========== Введите целое число n >= 2 ===================");
         System.out.println("=========================================================");
         int n = scanner.nextInt();
-        int[] massivAB = new int[2]; // создаем массив для обработки  чисел  a  b
         int i = 0;
         int a = n - 1;
         int b = n - a;
         int minNok = a * b;
-        massivAB[0] = a;
-        massivAB[1] = b;
+        int winnerA = a;  // создаем переменные для обработки  чисел  a  b
+        int winnerB = b;
         while (b < n) {
             int nok = lcm(a, b);
             if (nok < minNok) {
                 minNok = nok;
-                massivAB[0] = a;
-                massivAB[1] = b;
-                System.out.println(minNok + " наименьшее общее кратное для чисел  " + massivAB[0] + " и " + massivAB[1]);
+                winnerA = a;
+                winnerB = b;
+                System.out.println(minNok + " наименьшее общее кратное для чисел  " + winnerA + " и " + winnerB);
             }
             a = a - 1;
             b = b + 1;
@@ -30,7 +29,8 @@ public class Main {
 
         System.out.println("================================================================");
         System.out.println("          РЕЗУЛЬТАТ - найдена выигрышнаяч комбинация            ");
-        System.out.println(minNok + " - наименьшее общее кратное для чисел a & b --> " + massivAB[0] + " & " + massivAB[1]);
+        System.out.println(minNok + " - наименьшее общее кратное для чисел a & b ---> " + winnerA + " & " + winnerB);
+        System.out.println(gcdGenius(a, b) + " - наибольший общий делитель для чисел a & b --> " + winnerA + " & " + winnerB);
         System.out.println("================================================================");
 
     }
